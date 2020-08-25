@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ER Parking | Park Out</title>
+
+    <script src="./script.js" defer></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div id="header">
+        <div id="container-wrapper">
+            <div>
+                <h2>ER Parking</h2>
+                <h2>Park-Out</h2>
+                <button onclick="return logout(`login`)" style="margin-left: 10px">Logout</button><br><br>
+            </div>
+        </div>
+    </div>
+    
+    <div id="body">
+        <div id="container-wrapper">
+            <div>
+                <form action="" name="parkout_form">
+                    <table>
+                        <tr>
+                            <td><label for="">Customer Id</label></td>
+                            <td><input type="number" name="customer_id" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="">Registration Number</label></td>
+                            <td><input type="text" name="reg_number" required></td>
+                        </tr>
+                        <tr>
+                            <td><label for="">Vehicle</label></td>
+                            <td><select name="vehicle" id="" required>
+                                <option value="">-- please choose --</option>
+                                <option value="car">Car</option>
+                                <option value="bike">Bike</option>
+                                </select> <br>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><br><button onclick="parkOut()">Park Out</button></td>
+                        </tr>
+                    </table>     
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css"> 
+    <script src="./script.js"></script>
+    <script>showReport()</script>   
+    <title>ER Parking | Admin</title>
+</head>
+<body>
+    <div id="header">
+        <div id="container-wrapper" style="width: 900px;">
+            <div>
+                <h2>ER Parking</h2>
+                <h2>Admin</h2>
+                <button onclick="return logout(`loginAdmin`)" style="margin-left: 10px">Logout</button><br><br>
+            </div>
+        </div>
+    </div>
+
+    <div id="body">
+        <div id="container-wrapper" style="width: 900px;">
+            <div>
+                <br><label for="">Operator : </label>
+                <select id="" onchange="showReport(this.value)">
+                  <option value="">All</option>
+                  <option value="operator1">Operator 1</option>
+                  <option value="operator2">Operator2</option>
+                </select>
+            <!-- </div>
+            <div> -->
+                <br><br><button onclick="showReport()">Refresh</button><br><br>
+            <!-- </div>
+            <div> -->
+                <table width=80%% cellpadding=10px border=1 id="tableReport">
+                    <thead>
+                        <th>No</th>
+                        <th>Operator</th>
+                        <th>Date</th>
+                        <th>Customer Id</th>
+                        <th>Vehicle</th>
+                        <th>Reg.Number</th>
+                        <th>Duration</th>
+                        <th>Total</th>
+                    </thead>
+                    <tbody>
+    
+                    </tbody>
+                </table>
+                <br>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
