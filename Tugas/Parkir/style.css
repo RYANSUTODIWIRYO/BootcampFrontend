@@ -43,7 +43,7 @@
 }
 
 button {
-    transition-duration: 0.4s;
+    transition-duration: 0.2s;
     cursor: pointer;
     width: 100px;
 }

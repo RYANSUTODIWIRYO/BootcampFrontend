@@ -106,7 +106,6 @@ const login = () => {
     const myForm = document.login_form
     const username = myForm.username.value
     const password = myForm.pass.value
-    let name = ""
 
     // Cek user
     if (username.toLowerCase() === "operator1"){
