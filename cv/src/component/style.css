@@ -1,0 +1,118 @@
+* {
+    font-family: Comic Sans MS;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+}
+
+hr {
+    width: 100%;
+    border: thin solid black;
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 5px 5px #aaaaaa;
+    background: rgb(188, 245, 204);
+    /* background-image: linear-gradient(to right, white, white, rgb(255, 255, 134), yellow); */
+    border: 2px solid rgb(13, 109, 26);
+    border-radius: 10px;
+    width: 1000px;
+    margin: 10px;
+}
+
+#header {
+    background-image: linear-gradient(to right, rgb(188, 245, 204),rgb(188, 245, 204), white, white);
+}
+
+#body {
+    background-image: linear-gradient(to bottom right, rgb(188, 245, 204), white, rgb(188, 245, 204));
+}
+
+.body {
+    /* background: red; */
+    margin: 10px;
+    width: 95%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.body-name {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 50px;
+}
+
+.body-name img {
+    width: 20%;
+    border-radius: 10px;
+    border: 5px solid rgb(13, 109, 26);
+}
+
+.body p {
+    text-align: justify;
+}
+
+.body h4 {
+    font-size: 20px; 
+    display: flex; 
+    flex-direction: row;
+    margin-bottom: -10px;
+    cursor: pointer;
+}
+
+.body h4:after {
+    content: "";
+    flex: 1;
+    border-bottom: 2px solid #000;
+    margin: auto;
+}
+
+.body h4:hover {
+    color: rgb(0, 192, 26);
+}
+
+.body-experience div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.body-education div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.body-portofolio {
+    display: flex;
+    flex-direction: column;
+}
+
+.body ol {
+    margin: 5px 0px;
+}
+
+#footer {
+    background-image: linear-gradient(to right, white, white, rgb(188, 245, 204),rgb(188, 245, 204));
+}
+
+.footer img {
+    height: 100px;
+}
+
+footer {
+    /* background-color: red; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 10px;
+    width: 95%;
+}
+
+
