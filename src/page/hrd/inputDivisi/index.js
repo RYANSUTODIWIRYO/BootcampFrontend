@@ -34,7 +34,7 @@ class InputDivisi extends Component {
     addDivision = (event) => {
         event.preventDefault()
 
-        const isExist = this.state.divisions.some(division => this.state.division == division)
+        const isExist = this.state.divisions.some(division => this.state.division === division)
         if (isExist){
             alert("Division is already exist!")
             return

@@ -40,7 +40,7 @@ class InputKaryawan extends Component {
         const password = "password" + name
         const user = { username, password, name, address}
 
-        const isExist = users.some(user => user.username == username)
+        const isExist = users.some(user => user.username === username)
         if (isExist){
             alert("Employee is already exist!")
             return

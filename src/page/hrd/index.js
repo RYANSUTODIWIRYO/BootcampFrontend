@@ -19,8 +19,6 @@ class HRD extends Component {
         return (
             <>
                 <div className="hrd">
-                    {/* <Navbar /> */}
-
                     <div className="navbar">
                         <Navbar
                             linkTo="/hrd/input-karyawan"

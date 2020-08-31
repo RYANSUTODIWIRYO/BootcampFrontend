@@ -19,34 +19,49 @@ class ListKaryawan extends Component {
         })
     }
 
-    updateData = () => {
+    updateData = (e, username) => {        
+        // console.log(username) 
+        // console.log(e.target.value)
+        const div = e.target.value 
+        let newUsers = this.state.users.map((user) => {
+            if (user.username === username){
+                return {
+                    username: user.username,
+                    password: user.password,
+                    name: user.name,
+                    division: div,
+                    address: user.address
+                }
+            } else {
+                return user
+            }
+        })
 
+        this.setState({
+            users: newUsers
+        })
+
+        localStorage.users = JSON.stringify(newUsers)
+        // window.location.reload()
     }
+
+    
 
     showTable = () => {
         const { users, divisions } = this.state
         return users.map((user, idx) => {
             const { username, name, division, address } = user
-
-            // let divisionOption = divisions.map((div) =>
-            //     <option key={div} value={div}>{div}</option>
-            // )
-
             return (
-                <tr key={idx + 1}>
+                <tr key={idx}>
                     <td>{idx + 1}</td>
                     <td>{name}</td>
                     <td>
-                        <select onChange={this.updateData(username, this.value)}>
+                        <select defaultValue={division} onChange={(e) => this.updateData(e, username)}>
                             <option value=""> -- Please Choose -- </option>
                             {
                                 divisions.map(div => {
-                                    let isSelected = false
-                                    if (div === division){
-                                        isSelected = true
-                                    }
                                     return (
-                                        <option key={div} value={div} selected={isSelected}>{div}</option>
+                                        <option key={div} value={div}>{div}</option>
                                     )
                                 })
                             }                     

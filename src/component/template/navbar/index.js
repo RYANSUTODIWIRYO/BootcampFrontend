@@ -28,7 +28,7 @@ class Navbar extends Component {
             // </div>
             <>
                 <Link to={this.props.linkTo}>
-                    <div>{this.props.label}</div>
+                    <div style={{textDecoration: "none"}}>{this.props.label}</div>
                 </Link>
             </>
         )
