@@ -28,43 +28,30 @@ class ListKaryawan extends Component {
         return users.map((user, idx) => {
             const { username, name, division, address } = user
 
-            // let divisionOption = `
-            //     <select onChange={this.updateData({username}, this.value)}>
-            //         <option value="" /> -- Please Choose --
-            // `
-            // for (let i = 0; i < divisions.length; i++) {
-                
-                
-            // }
+            // let divisionOption = divisions.map((div) =>
+            //     <option key={div} value={div}>{div}</option>
+            // )
 
             return (
-                // const { username, name, division, address } = user
-                // let divisionList = divisions.map((division) => {
-                //     return(
-
-                //     )
-
-                // })
-
-
                 <tr key={idx + 1}>
                     <td>{idx + 1}</td>
                     <td>{name}</td>
                     <td>
                         <select onChange={this.updateData(username, this.value)}>
-                            <option value="" /> -- Please Choose --
+                            <option value=""> -- Please Choose -- </option>
                             {
-                                divisions.map((division) => {
-                                        return(
-                                            <>
-                                                <option value={division}/>{division}
-                                            </>
-                                        )                    
-                                    })
-                            }
+                                divisions.map(div => {
+                                    let isSelected = false
+                                    if (div === division){
+                                        isSelected = true
+                                    }
+                                    return (
+                                        <option key={div} value={div} selected={isSelected}>{div}</option>
+                                    )
+                                })
+                            }                     
                         </select>
                     </td>
-                    {/* <td>{division}</td> */}
                     <td>{address}</td>
                 </tr>
             )
