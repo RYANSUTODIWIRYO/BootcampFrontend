@@ -30,6 +30,7 @@ class ListDivisi extends Component {
     render(){
         return(
             <div>
+                <h3>List Divisi</h3>
                 <table className="tableListDivisi">
                     <thead>
                         <tr>                            

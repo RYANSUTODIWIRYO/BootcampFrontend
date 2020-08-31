@@ -4,9 +4,9 @@
     justify-content: center;
     align-items: center;
 
-    background-image: linear-gradient(rgb(226, 226, 226), white, rgb(226, 226, 226));
+    /* background-image: linear-gradient(rgb(226, 226, 226), white, rgb(226, 226, 226)); */
 }
 
 .formLogin button {
-    margin: 20px 0px 10px -50px;
+    margin: 20px 0px 10px -20px;    
 }

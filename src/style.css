@@ -1,9 +1,19 @@
 * {
-    font-family: Comic Sans MS;
+    font-family: Arial, sans-serif;
+    /* text-decoration: none; */
 }
 
 #root {
     display: flex;
     flex-direction: column;
-    width: 1000px;
+    align-items: center;
+    width: 100%;
+    /* background-color: azure; */
+}
+
+.container-wrapper {
+    display: flex;
+    justify-content: center;
+    /* background-color:rgb(240, 240, 240); */
+    width: 100%;
 }

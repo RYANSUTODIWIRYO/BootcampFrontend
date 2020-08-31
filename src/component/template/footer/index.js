@@ -5,8 +5,10 @@ class Footer extends Component {
     render(){
         return (
             <>
-                <div className="footer">
-                    <h4 style={{textAlign:"right"}}>Copyright 2020</h4>
+                <div className="container-wrapper" style={{backgroundColor:"rgb(68, 68, 68)"}}>
+                    <div className="footer">
+                        <h4>© Copyright 2020. All Right Reserved</h4>
+                    </div>
                 </div>
             </>
         )

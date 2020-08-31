@@ -5,8 +5,10 @@ class Header extends Component {
     render(){
         return (
             <>
-                <div className="header">
-                    <h3>HRD Information System</h3>
+                <div className="container-wrapper" style={{backgroundColor:"rgb(245, 245, 245)"}}>
+                    <div className="header">                        
+                        <h2>HRD Information System</h2>
+                    </div>
                 </div>
             </>
         )

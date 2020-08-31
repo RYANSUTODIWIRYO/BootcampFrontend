@@ -18,7 +18,7 @@ class HRD extends Component {
     render(){
         return (
             <>
-                <div className="hrd">
+                <div className="container-wrapper" style={{backgroundColor: "rgb(179, 255, 179)"}}>                
                     <div className="navbar">
                         <Navbar
                             linkTo="/hrd/input-karyawan"
@@ -44,30 +44,33 @@ class HRD extends Component {
                         <button onClick={this.logout}>Logout</button>
                         </Link>
                     </div>
-
-                    <Switch>
-                        <Route exact path="/hrd">
-                            <div>
-                                <h2>Welcome HRD</h2>
-                            </div>
-                        </Route>
-                        <Route path="/hrd/input-karyawan">
-                            <InputKaryawan />
-                        </Route>
-                        <Route path="/hrd/list-karyawan">
-                            <ListKaryawan />
-                        </Route>
-                        <Route path="/hrd/input-divisi">
-                            <InputDivisi />
-                        </Route>
-                        <Route path="/hrd/list-divisi">
-                            <ListDivisi />
-                        </Route>
-                        <Route path="/hrd/cv">
-                            <CV />
-                        </Route>
-                    </Switch>
                 </div>
+                <div className="container-wrapper">
+                    <div className="hrd">
+                        <Switch>
+                            <Route exact path="/hrd">
+                                <div>
+                                    <h2>Welcome HRD</h2>
+                                </div>
+                            </Route>
+                            <Route path="/hrd/input-karyawan">
+                                <InputKaryawan />
+                            </Route>
+                            <Route path="/hrd/list-karyawan">
+                                <ListKaryawan />
+                            </Route>
+                            <Route path="/hrd/input-divisi">
+                                <InputDivisi />
+                            </Route>
+                            <Route path="/hrd/list-divisi">
+                                <ListDivisi />
+                            </Route>
+                            <Route path="/hrd/cv">
+                                <CV />
+                            </Route>
+                        </Switch>
+                    </div>
+                </div>                
             </>
         )
     }

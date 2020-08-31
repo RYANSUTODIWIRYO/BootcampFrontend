@@ -1,4 +1,11 @@
 .header {
-    background-color: rgb(226, 226, 226);
-    border-radius: 5px;
+    /* background-color: rgb(226, 226, 226); */
+    color: green;
+    border-radius: 2px;
+    width: 1000px;
+    /* box-shadow: 5px 5px 10px grey; */
+}
+
+.header h2 {
+    margin-left: 10px;
 }

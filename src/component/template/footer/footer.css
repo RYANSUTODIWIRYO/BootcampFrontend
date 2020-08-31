@@ -1,8 +1,11 @@
 .footer {
-    background-color: rgb(226, 226, 226);    
-    border-radius: 5px;
+    background-color: rgb(68, 68, 68);    
+    border-radius: 2px;
+    width: 1000px;
+    /* box-shadow: 5px 5px 10px grey; */
 }
 
 .footer h4 {
+    color: white;
     margin: 5px;
 }

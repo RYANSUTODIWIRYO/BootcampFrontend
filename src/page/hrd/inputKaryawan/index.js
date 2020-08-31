@@ -53,31 +53,32 @@ class InputKaryawan extends Component {
     render(){
         return(
             <div>
+                <h3>Input Karyawan</h3>
                 <form>
-                <div>
-                    <RowInput 
-                        label="Username"
-                        type="text"
-                        name="username"
-                        fnSetValue={this.setValue}/>
-                </div>
-                <div>
-                    <RowInput 
-                        label="Name"
-                        type="text"
-                        name="name"
-                        fnSetValue={this.setValue}/>
-                </div>
-                <div>
-                    <RowInput 
-                        label="Address"
-                        type="text"
-                        name="address"
-                        fnSetValue={this.setValue}/>
-                </div>
-                <div>
-                    <button onClick={this.addEmployee}>Add Employee</button>
-                </div>
+                    <div>
+                        <RowInput 
+                            label="Username"
+                            type="text"
+                            name="username"
+                            fnSetValue={this.setValue}/>
+                    </div>
+                    <div>
+                        <RowInput 
+                            label="Name"
+                            type="text"
+                            name="name"
+                            fnSetValue={this.setValue}/>
+                    </div>
+                    <div>
+                        <RowInput 
+                            label="Address"
+                            type="text"
+                            name="address"
+                            fnSetValue={this.setValue}/>
+                    </div>
+                    <div>
+                        <button onClick={this.addEmployee}>Add Employee</button>
+                    </div>
                 </form>
             </div>
         )
