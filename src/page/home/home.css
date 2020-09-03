@@ -1,0 +1,13 @@
+.home {
+    display: flex;
+    flex-direction: row;
+}
+
+.homeContent {
+    /* display: flex;
+    justify-content: center;     */
+    width: 75%;
+    margin: 100px;
+    /* border: 2px solid red; */
+    /* padding: 0 0 10px 0; */
+}
