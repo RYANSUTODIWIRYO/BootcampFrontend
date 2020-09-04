@@ -25,6 +25,7 @@ class Login extends Component {
         for (let i = 0; i < users.length; i++) {
             if (users[i].username === username && users[i].password === password ) {
                 doLogin(users[i])
+                return alert("Login success")
             }
         }
         
