@@ -6,7 +6,6 @@ class CV extends Component {
         const {name, address, dateOfBirth, division} = this.props.user
         return(
             <div>
-                {/* <h4>Curriculum Vitae</h4> */}
                 <table className="cvTable borderless">
                     <tbody>
                         <tr>

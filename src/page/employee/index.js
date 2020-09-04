@@ -25,9 +25,6 @@ class Employee extends Component {
         }
     }
 
-    // logout = () => {
-    //     localStorage.removeItem("userOnLogin")
-    // }
 
     onClickLogoutHandle = () => {
         this.props.doLogout()
@@ -39,7 +36,6 @@ class Employee extends Component {
         return (
             <>
                 <div className="employee">
-                    {/* <h1>Ini Employee</h1> */}
                     <div className="navbar">                        
                         <Navbar
                             linkTo="/employee"

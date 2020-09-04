@@ -5,16 +5,8 @@ class ListDivisi extends Component {
     constructor(props){
         super(props)
         this.state = {
-            // divisions : []
         }    
     }
-
-    // componentDidMount(){
-    //     const divisions = localStorage.divisions ? JSON.parse(localStorage.divisions) : []
-    //     this.setState({
-    //         divisions
-    //     })
-    // }
 
     showDataTable = () => {
         const { divisions } = this.props

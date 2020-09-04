@@ -1,5 +1,4 @@
 export const setLogin = (userOnLogin) => {
-    // alert ("action : " + username + " dan " + password)
     return {
         type: "LOGIN",
         payload: userOnLogin

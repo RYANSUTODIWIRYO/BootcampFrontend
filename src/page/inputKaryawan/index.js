@@ -1,9 +1,6 @@
 import React, { Component } from "react"
 import RowInput from "../../component/rowInput"
 import "./inputKaryawan.css"
-// import { saveUsers } from "../../action"
-// import { connect } from "react-redux"
-
 class InputKaryawan extends Component {
     constructor(props) {
         super(props)
@@ -13,46 +10,14 @@ class InputKaryawan extends Component {
             name: "",
             address: "",
             dateOfBirth: "",
-
-            // users: []
         }
     }
-
-    // componentDidMount(){
-    //     const users = localStorage.users ? JSON.parse(localStorage.users) : []
-    //     this.setState({
-    //         users
-    //     })
-    // }
     
     setValue = (el) => {
         this.setState({
             [el.name]: el.value
         })
     }
-
-    // saveData = (dataName, data) => {
-    //     let listOfData = localStorage.getItem(dataName) ? JSON.parse(localStorage.getItem(dataName)) : []
-    //     listOfData.push(data)
-    //     localStorage.setItem(dataName, JSON.stringify(listOfData))
-    //     window.location.reload()
-    // }
-
-    // addEmployee = (event) => {
-    //     // event.preventDefault()
-    //     const { username, name, address, dateOfBirth, users} = this.state
-    //     const password = "pass" + username
-    //     const user = { username, password, name, dateOfBirth, address}
-
-    //     const isExist = users.some(user => user.username === username)
-    //     if (isExist){
-    //         alert("Employee is already exist!")
-    //         return
-    //     }
-
-    //     this.saveData("users", user)
-    //     alert("Success add new employee!")
-    //     }
 
     onClickHandle = (event) => {
         event.preventDefault()
@@ -113,11 +78,5 @@ class InputKaryawan extends Component {
         )
     }
 }
-
-// const mapDispatchToProps = (dispatch) => ({
-//     doSaveUsers: (users) => dispatch(saveUsers(users))
-// })
-
-// export default connect(null, mapDispatchToProps)(InputKaryawan)
 
 export default InputKaryawan

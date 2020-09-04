@@ -1,29 +1,15 @@
 import React, { Component } from "react"
 import RowInput from "../../component/rowInput"
-// import "./inputKaryawan.css"
 
 class EditKaryawan extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            // username: "",
-            // password: "",
             name: "",
             address: "",
             dateOfBirth: "",
-
-            // users: [],
-            // user: "",
-            // userOnLogin: ""
         }
     }
-
-    // componentDidMount(){
-    //     const users = localStorage.users ? JSON.parse(localStorage.users) : []
-    //     this.setState({
-    //         users
-    //     })
-    // }
     
     setValue = (el) => {
         this.setState({
@@ -43,10 +29,7 @@ class EditKaryawan extends Component {
                 if (dateOfBirth === "") {dateOfBirth = userOnEdit.dateOfBirth}
                 return {
                     ...user,
-                    // username: user.username,
-                    // password: user.password,
                     name,
-                    // division: div,
                     address,
                     dateOfBirth
                 }
@@ -57,11 +40,7 @@ class EditKaryawan extends Component {
 
         doSaveUsers(updatedUsers)
         alert("Edit data is success")
-        // this.setState({
-        //     users: newUsers
-        // })
 
-        // localStorage.users = JSON.stringify(newUsers)
         window.location.reload()
     }
     
@@ -70,13 +49,6 @@ class EditKaryawan extends Component {
         return(
             <div className="inputKaryawan">
                 <form>
-                    {/* <div>
-                        <RowInput 
-                            label="Username"
-                            type="text"
-                            name="username"
-                            fnSetValue={this.setValue}/>
-                    </div> */}
                     <div>
                         <RowInput 
                             label="Name"

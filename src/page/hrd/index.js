@@ -3,18 +3,11 @@ import {Switch, Route, Link } from "react-router-dom";
 import Navbar from "../../component/template/navbar"
 import "./hrd.css"
 import { InputDivisi, ListDivisi, InputKaryawan, ListKaryawan } from "../../page"
-// import InputKaryawan from "../inputKaryawan"
-// import ListKaryawan from "../listKaryawan"
-// import InputDivisi from "../inputDivisi"
-// import ListDivisi from "../listDivisi"
 import CV from "../cv"
-// import { setLogout } from "../../action"
-// import { connect } from "react-redux"
 
 class HRD extends Component {
     logout = () => {
         this.props.doLogout()
-        // localStorage.removeItem("userOnLogin")
     }
 
     render(){
@@ -88,19 +81,5 @@ class HRD extends Component {
         )
     }
 }
-
-
-
-// // Get states from reducer as a props
-// const mapStateToProps = (state) => ({
-//     users : state.usersReducer.users,
-//     divisions : state.divisionsReducer.divisions
-// })
-
-// const mapDispatchToProps = (dispatch) => ({
-//     doLogout: () => dispatch(setLogout())
-// })
-
-// export default connect(mapStateToProps, mapDispatchToProps)(HRD)
 
 export default HRD

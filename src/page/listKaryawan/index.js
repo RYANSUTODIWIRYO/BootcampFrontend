@@ -1,8 +1,6 @@
 import React, { Component } from "react"
 import "./listKaryawan.css"
 import CV from "../cv"
-// import { saveUsers } from "../../action"
-// import { connect } from "react-redux"
 
 class ListKaryawan extends Component {
     constructor(props){
@@ -20,12 +18,7 @@ class ListKaryawan extends Component {
             if (user.username === username){
                 return {
                     ...user,
-                    // username: user.username,
-                    // password: user.password,
-                    // name: user.name,
-                    division: div,
-                    // address: user.address,
-                    // dateOfBirth: user.dateOfBirth
+                    division: div
                 }
             } else {
                 return user
@@ -33,13 +26,6 @@ class ListKaryawan extends Component {
         })
 
         doSaveUsers(updatedUsers)
-
-        // this.setState({
-        //     users: newUsers
-        // })
-
-        // localStorage.users = JSON.stringify(newUsers)
-        // window.location.reload()
     }
 
     setValue = (val) => {
@@ -109,11 +95,5 @@ class ListKaryawan extends Component {
        
     }
 }
-
-// const mapDispatchToProps = (dispatch) => ({
-//     doSaveUsers: (users) => dispatch(saveUsers(users))
-// })
-
-// export default connect(null, mapDispatchToProps)(ListKaryawan)
 
 export default ListKaryawan
