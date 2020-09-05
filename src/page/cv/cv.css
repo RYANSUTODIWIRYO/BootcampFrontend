@@ -1,0 +1,8 @@
+.cvTable th {
+    text-align: start;
+}
+
+.borderless th, .borderless td {
+    border: none;
+}
+
