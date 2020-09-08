@@ -25,7 +25,7 @@ class ShowUsers extends Component {
                 this.setState({
                     users
                 })
-                console.log(users)
+                // console.log(users)
             })
             .catch((err) => {
                 console.log("error :" + err)
