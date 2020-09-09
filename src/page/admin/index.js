@@ -61,13 +61,13 @@ class Admin extends Component {
                                 linkTo="/admin"
                             />
                         </div>
-                        <div className="navbarContent">
+                        {/* <div className="navbarContent">
                             <img className="navbarLogo" src={studentsLogo} alt="logo"/>
                             <Navbar
                                 label="Students"
                                 linkTo="/admin/students"
                             />
-                        </div>
+                        </div> */}
                         <div className="navbarContent">
                             <img className="navbarLogo" src={studentsLogo} alt="logo"/>
                             <Navbar

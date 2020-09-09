@@ -36,6 +36,9 @@ class Firebase {
         return this.auth.signInWithEmailAndPassword(user.email, user.password)
     }
 
+    // Logout user
+    logoutFirebaseUser = () => this.auth.signOut()
+
 
 
     // // User API

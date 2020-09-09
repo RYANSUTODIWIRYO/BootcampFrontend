@@ -4,15 +4,52 @@ import { Card } from "../../component"
 import "./student.css"
 import logoutLogo from "../../asset/logo/logout.png"
 import { connect } from "react-redux"
+import { setLogout } from '../../store/action/authAction'
+import { Switch, Route } from 'react-router-dom'
+import EditUser from '../editUser'
+import FirebaseContext from "../../config/firebase/firebaseContext"
 
 class Student extends Component {
+    //buat fitur logout
+
+    logoutHandler = () => {
+        const { logoutFirebaseUser } = this.props.firebase
+        const { doLogout } = this.props
+
+        logoutFirebaseUser()
+            .then(() => {
+                doLogout()
+                alert("Logout Success")
+            })
+            .catch( err => {
+                alert(err.type)
+                console.log(err.message)
+            })
+    }
+    
     render(){
-        const user = this.props.userOnLogin
+        const user = this.props.userOnLogin // Get user on login data
         return (
             <>
                 <div className="student">
                     <div className="navbar">
-                        <div className="navbarContent" onClick={() => this.props.fnChangeLogoutStatus()}>
+                        {/* home */}
+                        <div className="navbarContent">
+                            <img className="navbarLogo" src={logoutLogo} alt="logo"/>
+                            <Navbar
+                                label="Home"
+                                linkTo="/student"
+                            />
+                        </div>
+                        {/* edit */}
+                        <div className="navbarContent">
+                            <img className="navbarLogo" src={logoutLogo} alt="logo"/>
+                            <Navbar
+                                label="Edit Profile"
+                                linkTo="/student/edit"
+                            />
+                        </div>
+                        <div className="navbarContent" onClick={this.logoutHandler}>
                             <img className="navbarLogo" src={logoutLogo} alt="logo"/>
                             <Navbar
                                 label="Logout"
@@ -24,16 +61,27 @@ class Student extends Component {
                         {/* <div>
                             Helo {user.name}
                         </div> */}
-                        <div className="card">
-                            <div>
-                                <Card
-                                    picture={user.picture}
-                                    name={user.name}
-                                    quotes={user.quotes}
-                                    github={user.github}            
-                                />
+
+                        <Switch>
+                            <Route exact path="/student">
+                            <div className="card">
+                                <div>
+                                    <Card
+                                        picture={user.picture}
+                                        name={user.name}
+                                        quotes={user.quotes}
+                                        github={user.github}            
+                                    />
+                                </div>
                             </div>
-                        </div>                        
+                            </Route>
+                            <Route path="/student/edit">
+                                <FirebaseContext.Consumer>
+                                    {firebase => <EditUser {...this.props} firebase={firebase} user={user}/>}
+                                </FirebaseContext.Consumer>                                
+                                {/* <EditUser user={user}/> */}
+                            </Route>
+                        </Switch>                   
                     </div>            
                 </div>
             </>
@@ -45,10 +93,10 @@ const mapStateToProps = (state) => ({
     userOnLogin: state.authReducer.userOnLogin
 })
 
-// const mapDispatchToProps = (dispatch) => ({
-//     doLogin: (user) => dispatch(setLogin(user))
-// })
+const mapDispatchToProps = (dispatch) => ({
+    doLogout: () => dispatch(setLogout())
+})
 
-export default connect(mapStateToProps, null)(Student)
+export default connect(mapStateToProps, mapDispatchToProps)(Student)
 
 // export default Student

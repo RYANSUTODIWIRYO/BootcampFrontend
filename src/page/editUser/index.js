@@ -1,15 +1,14 @@
 import React, { Component } from 'react'
 import { RowInput } from '../../component'
 // import { connect } from "react-redux"
-import FirebaseContext from '../../config/firebase/firebaseContext';
+// import FirebaseContext from '../../config/firebase/firebaseContext';
 // import { auth } from 'firebase';
 
-// Child class
-class CreateUserForm extends Component {
+class EditUser extends Component {
     constructor(props){
         super(props)
         this.state = {
-            email: "",
+            // email: "",
             name: "",
             role: "",
             picture: "",
@@ -25,52 +24,50 @@ class CreateUserForm extends Component {
     }
 
     onClickHandler = () => {
-        const { email, name, role, picture , quotes, github } = this.state
-        const password = "pass" + name.toLowerCase()
-        
-        this.props.firebase
-            .createFirebaseUser({email, password}) // ke authentication
-            .then(authUser => {
-                return this.props.firebase.usersDb().doc(authUser.user.uid).set({ // firestore
-                    name,
-                    role,
-                    picture,
-                    quotes,
-                    github
-                }).then(() => {
-                    alert("Create user is success")
-                    window.location.reload()
-                }).catch(err => {
-                    // Handle error here
-                    // Rollback for createFirebaseUser error
-                })
-            }).catch(err => {
+        const { usersDb } = this.props.firebase
+        const { user } = this.props
+        let { /*email, */name, role, picture , quotes, github } = this.state
+
+        // get default value
+        if (name === "") {name = user.name}
+        if (role === "") {role = user.role}
+        if (picture === "") {picture = user.picture}
+        if (quotes === "") {quotes = user.quotes}
+        if (github === "") {github = user.github}
+
+        usersDb().doc(user.uid).update({name, role, picture , quotes, github})
+            .then(() => {
+                alert("Update user is success!")
+            })
+            .catch(err => {
+                alert("Failed update user")
                 console.error(err)
-                alert(err.message)
             })
     }
 
     render(){
+        const { user } = this.props
         return(
             <div className="createUser">
                 <div>
-                    <h3>Create User</h3>
+                    <h3>Edit User</h3>
                 </div>
                 <div className="createUserContent">
                     <div className="createUserForm">
-                        <div>
+                        {/* <div>
                             <RowInput
                                 type="email"
                                 name="email"
                                 label="Email"
                                 fnSetValue={this.setValue}
                             />
-                        </div>
+                        </div> */}
                         <div>
                             <RowInput
                                 type="text"
                                 name="name"
                                 label="Name"
+                                defaultValue={user.name}
                                 fnSetValue={this.setValue}
                             />
                         </div>
@@ -79,6 +76,7 @@ class CreateUserForm extends Component {
                                 type="text"
                                 name="role"
                                 label="Role"
+                                defaultValue={user.role}
                                 fnSetValue={this.setValue}
                             />
                         </div>                    
@@ -87,6 +85,7 @@ class CreateUserForm extends Component {
                                 type="text"
                                 name="picture"
                                 label="Profile Picture"
+                                defaultValue={user.picture}
                                 fnSetValue={this.setValue}
                             />
                         </div>
@@ -95,6 +94,7 @@ class CreateUserForm extends Component {
                                 type="text"
                                 name="quotes"
                                 label="Quotes"
+                                defaultValue={user.quotes}
                                 fnSetValue={this.setValue}
                             />
                         </div>
@@ -103,11 +103,12 @@ class CreateUserForm extends Component {
                                 type="text"
                                 name="github"
                                 label="Github"
+                                defaultValue={user.github}
                                 fnSetValue={this.setValue}
                             />
                         </div>
                         <div>
-                            <button onClick={this.onClickHandler}>Create User</button>
+                            <button onClick={this.onClickHandler}>Edit User</button>
                         </div>
                     </div>
                 </div>
@@ -116,19 +117,4 @@ class CreateUserForm extends Component {
     }    
 }
 
-// Parent class
-class CreateUser extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {}
-    }
-    render() {
-        return (
-            <FirebaseContext.Consumer>
-                {firebase => <CreateUserForm {...this.props} firebase={firebase} />}
-            </FirebaseContext.Consumer>
-        )
-    }
-}
-
-export default CreateUser
+export default EditUser

@@ -16,6 +16,7 @@ class RowInput extends Component {
                     <Input 
                         type={this.props.type}
                         name={this.props.name}
+                        defaultValue={this.props.defaultValue}
                         fnSetValue={this.props.fnSetValue}
                     />
                 </div>

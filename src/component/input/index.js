@@ -12,6 +12,7 @@ class Input extends Component {
                 <input
                     type={this.props.type}
                     name={this.props.name}
+                    defaultValue={this.props.defaultValue}
                     onChange={(el) => this.props.fnSetValue(el.target)}
                 />
             </>

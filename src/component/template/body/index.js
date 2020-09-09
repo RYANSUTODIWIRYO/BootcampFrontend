@@ -2,72 +2,38 @@ import React, { Component } from 'react'
 import { Switch, Route, Redirect } from "react-router-dom"
 import { Admin, Home, Login, Student } from "../../../page"
 import { connect } from "react-redux"
+import { FirebaseContext } from '../../../config/firebase'
+import { setLogin } from "../../../store/action/authAction"
 
 
 class Body extends Component {
     constructor(props){
         super(props)
         this.state = {
-            // users: [],
-            // userOnLogin: "",
-            // isLogin: false
+            // userOnLoginRole: ""
         }
     }
 
     // componentDidMount() {
-    //     const defaultData = [
-    //         {"username": "Admin", "password": "passwordadmin", "name":"Admin", "role":"admin", "quotes":"Mantap Juragan", "github":"https://github.com", "picture":"https://www.juventus.com/images/image/private/t_portrait_tablet_desktop/f_auto/dev/gasthabxcnpnfjah5uac.jpg"},
-    //         {"username": "Ryan", "password": "passwordryan", "name":"Ryan", "role":"student", "quotes":"Mantap Gan", "github":"https://github.com/RYANSUTODIWIRYO", "picture":"https://i.ibb.co/kQMJF86/DSC-7410.jpg"},
-    //         {"username": "Leonardo", "password": "passwordleonardo", "name":"Leonardo DiCaprio", "role":"student", "quotes":"Enak Rose", "github":"https://github.com", "picture":"https://cdn.idntimes.com/content-images/community/2019/02/186413a2093d0f5ee331075dc44e99e2-0f20dff170d646afc3ace3ea0738b750.jpg"},
-    //         {"username": "Nabil", "password": "passwordnabil", "name":"Ahmad Nabil", "role":"student", "quotes":"Seharusnya kamu belajar berjalan dulu, nak! Barulah kamu bisa berlari.", "github":"hhttps://github.com/nbl77", "picture":"https://i.ibb.co/yFkZY5y/photoku.jpg"}
-    //       ]
-    //     let users = [], userOnLogin = "", isLogin = false
-
-    //     // Get users data from local storage
-    //     if (localStorage.users) { 
-    //         users = JSON.parse(localStorage.users)
-    //     } else {
-    //         users = defaultData
-    //         localStorage.setItem("users", JSON.stringify(users))
+    //     const { isLogin, userOnLogin, doLogin } = this.props
+    //     const { usersDb } = this.props.firebase
+    //     if (isLogin) {
+    //         usersDb().doc(userOnLogin.uid).get()
+    //             .then( user => {
+    //                 // console.log(user.data())
+    //                 alert("berhasil login")
+    //                 doLogin({...user.data(), uid: userOnLogin.uid})
+    //                 this.setState({
+    //                     userOnLogin.role : user.data().role
+    //                 })
+    //             })
     //     }
-
-    //     // Get login info from local storage
-    //     if (localStorage.userOnLogin) { 
-    //         isLogin = true
-    //         userOnLogin = JSON.parse(localStorage.userOnLogin)
-    //     }
-
-    //     localStorage.setItem("isLogin", isLogin)
-    //     this.setState({
-    //         users,
-    //         userOnLogin,
-    //         isLogin
-    //     })
-    // }
-
-    // changeLoginStatus = (userOnLogin) => {
-    //     const isLogin = true
-    //     localStorage.setItem("isLogin", isLogin)
-    //     localStorage.setItem("userOnLogin", JSON.stringify(userOnLogin))
-    //     this.setState({
-    //         isLogin,
-    //         userOnLogin
-    //     })
-    // }
-
-    // changeLogoutStatus = () => {
-    //     const isLogin = false, userOnLogin = ""
-    //     localStorage.setItem("isLogin", isLogin)
-    //     localStorage.removeItem("userOnLogin")
-    //     this.setState({
-    //         isLogin,
-    //         userOnLogin
-    //     })
     // }
 
     render() {
 
-        const { userOnLogin, isLogin } = this.props
+        const { isLogin, userOnLogin } = this.props
+        // const { userOnLogin.role } = this.state
 
         return(
             <Switch>
@@ -112,14 +78,17 @@ class Body extends Component {
                         )
                     }
                 </Route>
-                <Route exact path="/student">
+                <Route path="/student">
                     {
                         (isLogin && userOnLogin.role === "student")? (
-                            <Student
-                                // userOnLogin = {this.state.userOnLogin}
-                                // isLogin = {this.state.isLogin}
-                                // fnChangeLogoutStatus = {this.changeLogoutStatus}
-                            />
+                            <FirebaseContext.Consumer>
+                                {firebase => <Student {...this.props} firebase={firebase} />}
+                            </FirebaseContext.Consumer>
+                            // <Student
+                            //     userOnLogin = {this.state.userOnLogin}
+                            //     isLogin = {this.state.isLogin}
+                            //     fnChangeLogoutStatus = {this.changeLogoutStatus}
+                            // />
                         ) : (
                             <Redirect to="/login"/>
                         )
@@ -136,4 +105,8 @@ const mapStateToProps = (state) => ({
     isLogin : state.authReducer.isLogin
 })
 
-export default connect(mapStateToProps, null)(Body)
+const mapDispatchToProps = (dispatch) => ({
+    doLogin: (user) => dispatch(setLogin(user))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Body)

@@ -9,7 +9,6 @@ const persistConfig = {
     storage
 }
 
-
 const persistedReducer = persistReducer(persistConfig, rootReducer) // Creating persist reducer
 const store = createStore(persistedReducer) // Creating store
 const persistor = persistStore(store) // Createing persist store 

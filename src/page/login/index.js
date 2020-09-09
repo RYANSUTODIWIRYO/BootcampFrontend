@@ -23,27 +23,10 @@ class LoginForm extends Component {
         })
     }
 
-    // onLogin = () => {
-    //     const { users } = this.props
-    //     const { username, password } = this.state
-        
-    //     for (let i = 0; i < users.length; i++) {
-    //         if(users[i].username === username && users[i].password === password) {
-    //             // const user = users[i]
-    //             this.props.fnChangeLoginStatus(users[i])
-    //             return alert("login success")
-    //         }          
-    //     }
-
-    //     return alert("Invalid username or password " + username + " dan " + password)
-    // }
-
     loginHandler = () => {
         const { email, password } = this.state
         const { doLogin } = this.props
         const { loginFirebaseUser, usersDb } = this.props.firebase
-
-        alert (password)
 
         if (email === "") {return alert("Email must not empty!")}
         else if (password === "") {return alert("Password must not empty!")}
@@ -51,16 +34,21 @@ class LoginForm extends Component {
         loginFirebaseUser({email, password}) // sign in with authentication
             .then( res => {
                 if (res.user) {
-                    // doLogin()
                     // alert(res.user.uid)
+                    // doLogin({uid: res.user.uid})
+                    alert("berhasil login")
+
                     usersDb().doc(res.user.uid).get()
                         .then( userOnLogin => {
                             // console.log(userOnLogin.data())
                             // alert("berhasil login")
-                            doLogin(userOnLogin.data())
+                            doLogin({...userOnLogin.data(), uid: res.user.uid})
+                        })
+                        .then(() => {
+                            window.location.reload()
                         })                    
                 }
-            })
+            })            
             .catch( err => {
                 console.error(err)
                 alert(err.message)
