@@ -10,17 +10,18 @@ class Login extends Component {
         }
     }
     
-    // onChangeHandler = (e) => {
-    //     alert(e.target.name)
+    // onChangeHandler = (e, name) => {
+        // console.log(e + " " + name)
+        // alert(e.target.name)
     //     this.setState({
-    //         [e.name]: e.value
+    //         [name]: e
     //     })
     // }
 
     onPressHandler = () => {
         const { email, password } = this.state
-        // alert(`Email : ${email}\nPassword : ${password}`)
-        alert("Button Login Clicked")
+        alert(`Email : ${email}\nPassword : ${password}`)
+        // alert("Button Login Clicked")
     }
     
     render(){
@@ -43,7 +44,8 @@ class Login extends Component {
                                 name={"email"}
                                 placeholder="Email"
                                 // onChange={(e) => this.onChangeHandler(e)}
-                                // onChangeText={this.onChangeHandler}
+                                // onChangeText={(e) => this.onChangeHandler(e, "email")}
+                                onChangeText={(email) => this.setState({email})}
                             />
                         </View >
                         <View style={styles.rowInput}>
@@ -57,6 +59,7 @@ class Login extends Component {
                                 placeholder="Password"
                                 secureTextEntry={true}
                                 // onChange={(e) => this.onChangeHandler(e)}
+                                onChangeText={(password) => this.setState({password})}
                             />
                         </View>
                         <View style={styles.rowInput}>
