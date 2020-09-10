@@ -42,8 +42,6 @@ class Login extends Component {
                                 style={styles.input}
                                 name={"email"}
                                 placeholder="Email"
-                                // onChange={(e) => this.onChangeHandler(e)}
-                                // onChangeText={(e) => this.onChangeHandler(e, "email")}
                                 onChangeText={(email) => this.setState({email})}
                             />
                         </View >
@@ -57,7 +55,6 @@ class Login extends Component {
                                 name="password"
                                 placeholder="Password"
                                 secureTextEntry={true}
-                                // onChange={(e) => this.onChangeHandler(e)}
                                 onChangeText={(password) => this.setState({password})}
                             />
                         </View>

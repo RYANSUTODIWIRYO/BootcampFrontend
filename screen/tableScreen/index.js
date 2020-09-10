@@ -39,19 +39,18 @@ class TableScreen extends Component {
         
         // Show data
         return tableData.map((rowData, index) => (
-                    <TableWrapper key={index} style={styles.row}>
-                        {
-                            rowData.map((cellData, cellIndex) => (
-                                <Cell
-                                    key={cellIndex}
-                                    data={cellIndex === 3 ? element(rowData, index) : cellData}
-                                    textStyle={styles.text}
-                                />
-                            ))
-                        }
-                    </TableWrapper>
-                )
-            )
+            <TableWrapper key={index} style={styles.row}>
+                {
+                    rowData.map((cellData, cellIndex) => (
+                        <Cell
+                            key={cellIndex}
+                            data={cellIndex === 3 ? element(rowData, index) : cellData}
+                            textStyle={styles.text}
+                        />
+                    ))
+                }
+            </TableWrapper>
+        ))
     }
     
     render() {
