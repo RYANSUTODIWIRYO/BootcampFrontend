@@ -16,7 +16,7 @@ class Home extends Component {
                 {
                     "id":1,
                     "name":"Ronaldo",
-                    "picture":"https://worldfootballindex.com/wp-content/uploads/2020/06/Ronaldo-Juventus-Penalty-miss.jpg"
+                    "picture": 'https://worldfootballindex.com/wp-content/uploads/2020/06/Ronaldo-Juventus-Penalty-miss.jpg'
                 },
                 {
                     "id":2,
@@ -30,6 +30,17 @@ class Home extends Component {
     addUser = (user) => {
         let { users } = this.state
         users.push(user)
+        this.setState({users})
+    }
+
+    deleteUser = (id) => {
+        // alert(id)
+        let { users } = this.state
+        for (let i = 0; i < users.length; i++) {
+            if (users[i].id === id){
+                users.splice(i, 1)
+            }
+        }
         this.setState({users})
     }
 
@@ -48,7 +59,7 @@ class Home extends Component {
             />
             <Tab.Screen
                 name="Table"
-                children={() => <TableScreen users={this.state.users}/>}
+                children={() => <TableScreen users={this.state.users} deleteUser={this.deleteUser}/>}
                 options={{
                     tabBarIcon: (props) => (
                         <IconBottom data={props} image={images.tableImage} />
