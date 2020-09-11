@@ -14,10 +14,46 @@ class TableScreen extends Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount() {        
+        this.setTableData(this.props.users)
+    }    
+
+    // Update 1
+    // If the derived state (this component's props) has changed,
+    // this function will be triggered
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        this.setTableData(nextProps.users)
+    }
+
+    // Update 2
+    // If in these following logic returns true,
+    // the component will re-render
+    shouldComponentUpdate(nextProps, nextState){
+        if (this.props.users !== nextProps.users) {
+            return true
+        } else if (this.state.tableData !== nextState.tableData) {
+            return true
+        }
+        return false
+    }
+
+    // UNSAFE_componentWillUpdate() {
+
+    // }
+
+    // componentDidUpdate(prevProps, prevState) {
+    //     if (this.props.users.length !== prevProps.users.length){
+    //         Alert.alert("Total of users is increased!")
+    //     } else if (this.state.tableData !== prevState.tableData) {
+    //         Alert.alert("Table of users is changed!")
+    //     }
+    //     // Alert.alert("Nothing Change")
+    // }
+
+    setTableData = (users) => {
         // Convert data from json to array
         let tableData = []
-        this.props.users.map((user, idx) => {
+        users.map((user, idx) => {
             const dataTemp = [idx+1, user.id, user.name, ""]
             tableData.push(dataTemp) 
         })
@@ -35,7 +71,7 @@ class TableScreen extends Component {
     }
     
     onPressEditHandler = () => {
-
+        Alert.alert("incomming feature")
     }
 
     showTableData = () => {
@@ -44,7 +80,7 @@ class TableScreen extends Component {
         // Create Button
         const element = (data, index) => (
             <View key={index} style={styles.action}>                
-                <TouchableOpacity onPress={() => this.onPressEditHandler(data)}>
+                <TouchableOpacity onPress={() => this.onPressEditHandler(data[0])}>
                     <View style={styles.btn}>
                         <Text style={styles.btnText}>Edit</Text>
                     </View>
@@ -74,13 +110,7 @@ class TableScreen extends Component {
     }
 
     refresh = () => {
-        // alert("clicked")
-        let tableData = []
-        this.props.users.map((user, idx) => {
-            const dataTemp = [idx+1, user.id, user.name, ""]
-            tableData.push(dataTemp) 
-        })
-        this.setState({tableData})
+        this.setTableData(this.props.users)
     }
     
     render() {

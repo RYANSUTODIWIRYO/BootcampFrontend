@@ -24,12 +24,9 @@ class HomeScreen extends Component {
 
         return filterUsers.map((user, idx) => {
             return (                
-                <View key={idx}>
-                    <Text>Id : {user.id}</Text>
-                    <Text>Name: {user.name}</Text>
-                    <Avatar source={{uri: user.picture}}/>
-                    {/* <Image source={{uri: user.picture}} /> */}
-                    {/* <Text>{user.picture}</Text> */}
+                <View key={idx} style={{margin:20}}>                    
+                    <Image source={{uri: user.picture}} style={{width:75, height:75, borderRadius:5}}/>
+                    <Text>{user.name}</Text>
                 </View>
             )
         })
@@ -46,7 +43,7 @@ class HomeScreen extends Component {
                             onChangeText={(nameFilter) => this.setState({nameFilter})}
                         />
                     </View>
-                    <View>
+                    <View style={styles.card}>
                         {this.showCard()}
                     </View>
                 </View>
@@ -67,7 +64,8 @@ const styles = StyleSheet.create({
     textHead: { fontSize: 25 },
     container: { flex: 1, flexDirection: "column", alignItems:"center", padding: 16, paddingTop: 30, backgroundColor: '#fff' },
     inputIcon : { width: 25, height: 25, marginRight: 10 },
-    button: { alignItems: "center", justifyContent: "center", width: 100, height: 40, backgroundColor:"#DDDDDD", borderRadius: 5 }
+    button: { alignItems: "center", justifyContent: "center", width: 100, height: 40, backgroundColor:"#DDDDDD", borderRadius: 5 },
+    card: { flexDirection: "row",  flexWrap: "wrap" }
 })
 
 export default HomeScreen

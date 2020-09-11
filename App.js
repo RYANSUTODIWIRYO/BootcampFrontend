@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 // import { ScrollView, Text } from "react-native"
-import { Login, Home } from "./screen"
+// import { Login, Home } from "./screen"
+import Login from "./screen/login"
+import Home from "./screen/home"
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { View, Button } from 'react-native'
@@ -12,19 +14,19 @@ class App extends Component {
     return (
       <NavigationContainer>
         <Stack.Navigator
-        initialRouteName="Login"
-        screenOptions={({route, navigation}) => ({
-          headerRight: () => (
-            <View style={{marginRight: 10}}>
-              <Button
-                // only alert is ok, the other is error.
-                onPress={() => navigation.navigate('Login')}
-                title="Logout"
-                color="red"
-              />
-            </View>
-          )
-        })}>          
+          initialRouteName="Login"
+          screenOptions={({route, navigation}) => ({
+            headerRight: () => (
+              <View style={{marginRight: 10}}>
+                <Button
+                  // only alert is ok, the other is error.
+                  onPress={() => navigation.navigate('Login')}
+                  title="Logout"
+                  color="red"
+                />
+              </View>
+            )
+          })}>          
           <Stack.Screen
             name="Login"
             component={Login}

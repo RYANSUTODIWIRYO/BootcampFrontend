@@ -11,16 +11,16 @@ class Login extends Component {
     }
 
     onPressHandler = () => {
-        // return this.props.navigation.navigate("Home")
-        const { email, password } = this.state
-        const { navigation } = this.props
-        // alert(`Email : ${email}\nPassword : ${password}`)
+        return this.props.navigation.navigate("Home")
+        // const { email, password } = this.state
+        // const { navigation } = this.props
+        // // alert(`Email : ${email}\nPassword : ${password}`)
         
-        if(email === "admin@tes.com" && password === "admin") {
-            return navigation.navigate("Home")
-        }
+        // if(email === "admin@tes.com" && password === "admin") {
+        //     return navigation.navigate("Home")
+        // }
         
-        return alert("Invalid Username or Password")        
+        // return alert("Invalid Username or Password")        
     }
     
     render(){

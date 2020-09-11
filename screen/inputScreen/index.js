@@ -34,6 +34,7 @@ class InputScreen extends Component {
                                 source={images.idImage}
                         />
                     }
+                    selectTextOnFocus={true}
                     onChangeText={(id) => this.setState({id})}
                 />
                 <Input
@@ -45,6 +46,7 @@ class InputScreen extends Component {
                         />
                         
                     }
+                    selectTextOnFocus={true}
                     onChangeText={(name) => this.setState({name})}
                 />
                 <Input
@@ -55,7 +57,9 @@ class InputScreen extends Component {
                                 source={images.pictureImage}
                         />
                     }
+                    selectTextOnFocus={true}
                     onChangeText={(picture) => this.setState({picture})}
+                    contextMenuHidden={false} // show menu
                 />
                 <TouchableOpacity
                     style={styles.button}

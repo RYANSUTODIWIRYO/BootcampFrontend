@@ -4,6 +4,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs"
 // import HomeScreen from "../homeScreen"
 // import InputScreen from "../inputScreen"
 import { HomeScreen, InputScreen, TableScreen } from "../../screen"
+import Album from "../album"
 
 
 const Tab = createBottomTabNavigator()
@@ -53,8 +54,7 @@ class Home extends Component {
                 options={{
                     tabBarIcon: (props) => (
                         <IconBottom data={props} image={images.homeImage} />
-                    )
-                        
+                    )   
                 }}
             />
             <Tab.Screen
@@ -77,6 +77,15 @@ class Home extends Component {
                         
                 }}
             />
+            <Tab.Screen
+                name="Albums"
+                children={() => <Album/>}
+                options={{
+                    tabBarIcon: (props) => (
+                        <IconBottom data={props} image={images.albumImage} />
+                    )                        
+                }}
+            />
         </Tab.Navigator>
         )
     }
@@ -87,7 +96,7 @@ const IconBottom = (props) => {
     let colorSelected = focused ? color : 'grey'
     return (
         <View>
-            <Image source={props.image} style={{width:30, height:30, tintColor: colorSelected}} />
+            <Image source={props.image} style={{width:25, height:25, tintColor: colorSelected}} />
         </View>
     )
 }
@@ -96,7 +105,8 @@ const IconBottom = (props) => {
 const images = {
     homeImage: require("../../assets/image/home.png"),
     tableImage: require("../../assets/image/list.png"),
-    inputImage: require("../../assets/image/input.png")
+    inputImage: require("../../assets/image/input.png"),
+    albumImage: require("../../assets/image/album.png")
 }
 
 // For styling
