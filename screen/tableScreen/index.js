@@ -121,11 +121,11 @@ class TableScreen extends Component {
                     <View style={{alignItems:"center"}}>                    
                         <Text style={styles.textHead}>Users Table</Text>
                     </View>
-                    <TouchableOpacity onPress={this.refresh} style={{marginTop:20, marginBottom:20, alignItems: "center"}}>
+                    {/* <TouchableOpacity onPress={this.refresh} style={{marginTop:20, marginBottom:20, alignItems: "center"}}>
                         <View style={styles.btn}>
                             <Text style={styles.btnText}>Refresh</Text>
                         </View>
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                     <Table borderStyle={{borderColor: 'transparent'}} style={styles.table}>
                         <Row data={tableHead} style={styles.head} textStyle={styles.text}/>
                         {this.showTableData()}
@@ -137,7 +137,7 @@ class TableScreen extends Component {
 
 const styles = StyleSheet.create({
     container: { flex: 1, padding: 16, paddingTop: 30, backgroundColor: '#fff' },
-    textHead: { fontSize: 25 },
+    textHead: { fontSize: 25, marginBottom: 20 },
     head: { height: 40, backgroundColor: '#808B97' },
     text: { margin: 20 },
     row: { flexDirection: "row", backgroundColor: '#FFF1C1' },
