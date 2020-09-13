@@ -65,8 +65,8 @@ class Body extends Component {
                 </Route>
                 <Route path="/admin">
                     {
-                        (true) ? (
-                        // (isLogin && userOnLogin.role === "admin") ? (
+                        // (true) ? (
+                        (isLogin && userOnLogin.role === "admin") ? (
                             <Admin
                                 // users = {this.state.users}
                                 // userOnLogin = {this.state.userOnLogin}
