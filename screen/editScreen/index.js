@@ -23,6 +23,12 @@ class EditScreen extends Component {
         })
     }
 
+    setPicture = (picture) => {
+        this.setState({
+            picture
+        })
+    }
+
     onPressHandler = async () => {
         // Alert.alert("Clicked")
         const { updatePlayer, navigation } = this.props
@@ -30,6 +36,13 @@ class EditScreen extends Component {
         await updatePlayer({id, name, picture})
         Alert.alert("Edit Player Complete")
         navigation.navigate("TableScreen")
+    }
+
+    onPressCameraHandler = () => {
+        const { navigation } = this.props
+        navigation.navigate("CameraScreen", {
+            setPicture: this.setPicture,
+        })
     }
 
     render() {
@@ -65,7 +78,7 @@ class EditScreen extends Component {
                     selectTextOnFocus={true}
                     onChangeText={(name) => this.setState({name})}
                 />
-                <Input
+                {/* <Input
                     placeholder='Picture Link'
                     defaultValue={player.picture}
                     leftIcon={
@@ -77,7 +90,32 @@ class EditScreen extends Component {
                     selectTextOnFocus={true}
                     onChangeText={(picture) => this.setState({picture})}
                     contextMenuHidden={false} // show menu
-                />
+                /> */}
+                <View style={{width:"91%",flexDirection: "row", justifyContent: "center"}}>
+                    <Input
+                        placeholder='Picture Link'
+                        defaultValue={this.state.picture}
+                        leftIcon={
+                            <Image
+                                    style={styles.inputIcon}
+                                    source={images.pictureImage}
+                            />
+                        }
+                        selectTextOnFocus={true}
+                        onChangeText={(picture) => this.setState({picture})}
+                        contextMenuHidden={false} // show menu
+                    />
+                    <TouchableOpacity
+                        // style={styles.button}
+                        onPress={this.onPressCameraHandler}
+                    >
+                        {/* <Text>Camera</Text> */}
+                        <Image
+                            style={{height: 25, width: 25, marginTop: 10, marginRight: 10}}
+                            source={images.cameraImage}
+                        />
+                    </TouchableOpacity>
+                </View>
                 <TouchableOpacity
                     style={styles.button}
                     onPress={this.onPressHandler}
@@ -93,7 +131,8 @@ class EditScreen extends Component {
 const images = {
     idImage: require("../../assets/image/id.png"),
     nameImage: require("../../assets/image/name.png"),
-    pictureImage: require("../../assets/image/picture.png")
+    pictureImage: require("../../assets/image/picture.png"),
+    cameraImage: require("../../assets/image/camera.png")
 }
 
 // For styling

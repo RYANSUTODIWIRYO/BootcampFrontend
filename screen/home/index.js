@@ -55,10 +55,21 @@ class Home extends Component {
         const { id, name, picture } = player
         const result = await this.ExecuteQuery(
             "INSERT INTO players (id, name, picture) VALUES (?, ?, ?)",
-            [id, name, picture])
-        console.log("Add Player", result)
-        this.getPlayers()
-        Alert.alert("Add Player Complete")
+            [id, name, picture]
+            )
+            .then(res => {
+                console.log(res)
+                this.getPlayers()
+                Alert.alert("Add Player Complete")
+                return res
+            })
+            .catch(err => {
+                console.log('Error Add Player :', err)
+                Alert.alert("Failed Add Player :", err.message)
+                return err
+            })
+        
+        return result
     }
 
     deletePlayer = async (id) => {

@@ -1,8 +1,12 @@
 import React, { Component } from 'react'
-import { View, Text, Image, StyleSheet, Alert } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, Text, Image, StyleSheet, Alert, LogBox } from 'react-native'
 import { Input } from 'react-native-elements';
 import { TouchableOpacity } from 'react-native';
+
+// Ignoring warning
+LogBox.ignoreLogs([
+    'Non-serializable values were found in the navigation state',
+  ]);
 
 class InputScreen extends Component {
     constructor(props){
@@ -14,30 +18,46 @@ class InputScreen extends Component {
         }
     }
 
-    componentDidUpdate(prevProps, prevState) {
-        // console.log("Dari kamera: ", this.props.route.params)
-        if (prevProps.route.params?.picture !== this.props.route.params?.picture){
-            this.setValue("picture", this.props.route.params.picture)
-        }
-    }
+    // componentDidUpdate(prevProps, prevState) {
+    //     // console.log("Dari kamera: ", this.props.route.params)
+    //     if (prevProps.route.params?.picture !== this.props.route.params?.picture){
+    //         this.setPicture(this.props.route.params.picture)
+    //     }
+    // }
 
-    setValue = (name, val) => {
+    componentWillUnmount() {
         this.setState({
-            [name]: val
+            id: ""
         })
     }
 
-    onPressAddPlayerHandler = () => {
+    setPicture = (picture) => {
+        this.setState({
+            picture
+        })
+    }
+
+    onPressAddPlayerHandler = async () => {
         // Alert.alert("Clicked")
         const { addPlayer } = this.props
         const { id, name, picture } = this.state
-        addPlayer({id, name, picture})
-        // Alert.alert("Add Player Complete")
+        const result = await addPlayer({id, name, picture})        
+        
+        // If there is no error, clear input
+        if (!result.message) {
+            this.setState({
+                id : "",
+                name: "",
+                picture: ""
+            })
+        }
     }
     
     onPressCameraHandler = () => {
         const { navigation } = this.props
-        navigation.navigate("CameraScreen")
+        navigation.navigate("CameraScreen", {
+            setPicture: this.setPicture,
+        })
     }
 
     render() {
@@ -46,6 +66,7 @@ class InputScreen extends Component {
                 <Text style={styles.textHead}>Player Form</Text>
                 <Input
                     placeholder='ID'
+                    defaultValue={this.state.id}
                     leftIcon={
                         <Image
                                 style={styles.inputIcon}
@@ -57,6 +78,7 @@ class InputScreen extends Component {
                 />
                 <Input
                     placeholder='Name'
+                    defaultValue={this.state.name}
                     leftIcon={
                         <Image
                                 style={styles.inputIcon}
@@ -79,7 +101,7 @@ class InputScreen extends Component {
                         }
                         selectTextOnFocus={true}
                         onChangeText={(picture) => this.setState({picture})}
-                        contextMenuHidden={false} // show menu
+                        // contextMenuHidden={false} // show menu
                     />
                     <TouchableOpacity
                         // style={styles.button}

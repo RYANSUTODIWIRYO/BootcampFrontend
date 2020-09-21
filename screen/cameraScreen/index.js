@@ -8,7 +8,7 @@ class MyCamera extends PureComponent {
       const options = { quality: 0.5, base64: true };
       const data = await this.camera.takePictureAsync(options);
       console.log("ini uri: ", data.uri);
-      this.props.setPicture(data.uri)
+      this.props.setPictureTaken(data.uri);
     }
   };
   
@@ -54,26 +54,28 @@ class CameraScreen extends Component {
     picture: null
   }
 
-  setPicture = (uri) => {
+  setPictureTaken = (picture) => {
     this.setState({
-      picture: uri
+      picture
     })
   }
 
   onPressOkHandler = () => {
-    this.props.navigation.navigate("InputScreen",{
-      picture: this.state.picture
-    })
+    // this.props.navigation.navigate("InputScreen",{
+    //   picture: this.state.picture
+    // })
+    this.props.route.params.setPicture(this.state.picture)
+    this.props.navigation.goBack()
   }
 
   render() {
-    console.log("picture:",this.state.picture)
+    console.log("picture:", this.state.picture)
     return (
       <>
         {
           this.state.picture === null
           ? 
-          <MyCamera setPicture={this.setPicture}/>
+          <MyCamera setPictureTaken={this.setPictureTaken}/>
           :
           <View style={{flex:1, alignItems:"center"}}>
             <View>

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { createStackNavigator } from '@react-navigation/stack'
 import TableScreen from "../tableScreen"
 import EditScreen from "../editScreen"
-import { View, Text } from 'react-native'
+import CameraScreen from "../cameraScreen"
 
 const StackTable = createStackNavigator()
 
@@ -26,6 +26,10 @@ class Table extends Component {
                     children={props => <EditScreen
                         {...props}
                         updatePlayer={this.props.updatePlayer}/>}
+                />
+                <StackTable.Screen
+                    name="CameraScreen"
+                    children={props => <CameraScreen {...props}/>}
                 />
             </StackTable.Navigator>
         )

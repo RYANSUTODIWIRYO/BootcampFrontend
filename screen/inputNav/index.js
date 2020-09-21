@@ -23,7 +23,7 @@ class InputNav extends Component {
                 />
                 <StackInputNav.Screen
                     name="CameraScreen"
-                    component={CameraScreen} 
+                    component={CameraScreen}
                     options={{
                         headerShown: false,                        
                     }}               

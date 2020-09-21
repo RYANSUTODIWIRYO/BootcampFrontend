@@ -30,16 +30,17 @@ class Login extends Component {
     });
 
     // CreateTable = async () => {
-    //     let Table = await this.ExecuteQuery("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY NOT NULL, email text, password text)",[]);
+    //     let Table = await this.ExecuteQuery("CREATE TABLE IF NOT EXISTS users (id INTEGER PRIMARY KEY NOT NULL, email TEXT, password TEXT)",[]);
+    //     let Table2 = await this.ExecuteQuery("CREATE TABLE IF NOT EXISTS players (id INTEGER PRIMARY KEY NOT NULL, name TEXT, picture TEXT)",[]);
     //     console.log(Table);
+    //     console.log(Table2);
     // }
 
-    // Insert
+    // // Insert
     // insertQuery = async (email, password) => {
-    //     // const dbName = "user"
-    //     let query = await this.ExecuteQuery("INSERT INTO users (id, email, password) VALUES (?, ?, ?)", [2, 'operator@tes.com', 'operator'])
+    //     let query = await this.ExecuteQuery("INSERT INTO users (id, email, password) VALUES (?, ?, ?)", [1, 'admin@tes.com', 'admin'])
     //     const rows = query.rows;
-    //     console.error(query)
+    //     console.log("Insert: ", query)
     // }
 
     // Login Query
